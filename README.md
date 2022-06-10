@@ -1,6 +1,6 @@
 # m-ToolBox script for QB-Core
 
-| If you are interested in joining my community: **[𝘋𝘪𝘴𝘤𝘰𝘳𝘥](𝘩𝘵𝘵𝘱𝘴://𝘥𝘪𝘴𝘤𝘰𝘳𝘥.𝘨𝘨/𝘴𝘷𝘮𝘻𝘠𝘦𝘩𝘜8𝘙)**! |
+| If you are interested in joining my community: https://discord.gg/DdbhpDaeED |
 
 # About
 • Optimized
