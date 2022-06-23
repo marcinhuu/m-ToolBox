@@ -40,9 +40,12 @@ AddEventHandler("m-ToolBox:Client:GuardarToolBox", function()
     DeleteObject(ToolBox)
 end)
 
+local citizenid = nil
 AddEventHandler("m-ToolBox:Client:StorageToolBox", function()
-    TriggerEvent(Config.Utility.StashInvTrigger, Config.Utility.NameOfStash)
-    TriggerServerEvent(Config.Utility.OpenInvTrigger, "stash", Config.Utility.NameOfStash, {
+    local charinfo = QBCore.Functions.GetPlayerData().charinfo
+    citizenid = QBCore.Functions.GetPlayerData().citizenid
+    TriggerEvent(Config.Utility.StashInvTrigger, Config.Utility.NameOfStash..citizenid)
+    TriggerServerEvent(Config.Utility.OpenInvTrigger, "stash", Config.Utility.NameOfStash..citizenid, {
         maxweight = Config.Utility.MaxWeighStash,
         slots = Config.Utility.MaxSlotsStash,
     })
