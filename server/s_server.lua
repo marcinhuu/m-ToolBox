@@ -15,16 +15,36 @@ local function CreateObjectId()
     end
 end
 
-QBCore.Functions.CreateUseableItem('toolbox', function(source, item)
-    local Player = QBCore.Functions.GetPlayer(source)
-    if Player.Functions.GetItemBySlot(item.slot) ~= nil then
-        TriggerClientEvent("m-ToolBox:Client:spawnLight", source)
-    end
-end)
+QBCore.Functions.CreateUseableItem('toolbox', function(source, item)TriggerClientEvent("m-ToolBox:Client:spawnLight", source)end)
+QBCore.Functions.CreateUseableItem('repairkit', function(source, item) TriggerClientEvent("m-ToolBox:Client:RepairVehicle", source) end)
 
 RegisterNetEvent('m-ToolBox:Server:SpawnToolBox', function(type)
     local src = source
     local objectId = CreateObjectId()
     Objects[objectId] = type
     TriggerClientEvent("m-ToolBox:Client:SpawnToolBox", src, objectId, type, src)
+end)
+
+RegisterNetEvent('m-ToolBox:Server:RemoveItem', function(item, amount)
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+    Player.Functions.RemoveItem(item, amount)
+end)
+
+RegisterNetEvent('m-ToolBox:Server:AddItem', function(item, amount)
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+    Player.Functions.AddItem(item, amount)
+end)
+
+
+QBCore.Functions.CreateCallback("m-ToolBox:Server:HaveRepairKit", function(source, cb)
+    local src = source
+    local Ply = QBCore.Functions.GetPlayer(src)
+    local repairkit = Ply.Functions.GetItemByName("repairkit")
+    if repairkit ~= nil then
+        cb(true)
+    else
+        cb(false)
+    end
 end)
